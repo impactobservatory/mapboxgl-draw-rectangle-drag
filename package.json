@@ -1,6 +1,6 @@
 {
   "name": "mapboxgl-draw-rectangle-drag",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A Mapbox GL Draw plugin to create a rectangle via click & drag",
   "main": "build/mapboxgl-draw-rectangle-drag.module.js",
   "module": "build/mapboxgl-draw-rectangle-drag.module.js",
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/CartoDB/mapboxgl-draw-rectangle-drag.git"
+    "url": "git+https://github.com/impactobservatory/mapboxgl-draw-rectangle-drag.git"
   },
   "keywords": [
     "mapboxgl",
@@ -23,9 +23,9 @@
   "author": "Jesús Botella",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/CartoDB/mapboxgl-draw-rectangle-drag/issues"
+    "url": "https://github.com/impactobservatory/mapboxgl-draw-rectangle-drag/issues"
   },
-  "homepage": "https://github.com/CartoDB/mapboxgl-draw-rectangle-drag#readme",
+  "homepage": "https://github.com/impactobservatory/mapboxgl-draw-rectangle-drag#readme",
   "devDependencies": {
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.1.0",
