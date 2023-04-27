@@ -68,7 +68,7 @@ const DrawRectangleDrag = {
     state.endPoint = [event.lngLat.lng, event.lngLat.lat];
 
     this.updateUIClasses({ mouse: 'pointer' });
-    this.changeMode('simple_select', { featuresId: state.rectangle.id });
+    this.changeMode(this.drawConfig.defaultMode, { featuresId: state.rectangle.id });
   },
 
   onStop(state) {
@@ -90,12 +90,12 @@ const DrawRectangleDrag = {
     }
 
     this.deleteFeature([state.rectangle.id], { silent: true });
-    this.changeMode('simple_select', {}, { silent: true });
+    this.changeMode(this.drawConfig.defaultMode, {}, { silent: true });
   },
 
   onTrash(state) {
     this.deleteFeature([state.rectangle.id], { silent: true });
-    this.changeMode('simple_select');
+    this.changeMode(this.drawConfig.defaultMode);
   },
 
   toDisplayFeatures(state, geojson, display) {
