@@ -104,6 +104,11 @@ const DrawRectangleDrag = {
 
     this.updateUIClasses({ mouse: 'pointer' });
     this.changeMode(this.drawConfig.defaultMode, { featuresId: state.rectangle.id });
+    // HACK, get the ref to the custom buttons through the map._container
+    // this would not be necessary if there was an easy way to hook our button into the ui
+    this.map._container.querySelector('button.mapbox-gl-draw_rectangle').classList.remove('active');
+    return this.onStop(state);
+  },
 
   // support mobile taps
   onTap: function(state, e) {
