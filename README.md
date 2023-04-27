@@ -1,40 +1,22 @@
 # Mapbox GL Draw Rectangle Drag
 A Mapbox GL Draw plugin to create a rectangle via click &amp; drag.
 
-Based on [`thegisdev/mapbox-gl-draw-rectangle-mode`](https://github.com/thegisdev/mapbox-gl-draw-rectangle-mode) plugin code.
+Based on [`thegisdev/mapbox-gl-draw-rectangle-mode`](https://github.com/thegisdev/mapbox-gl-draw-rectangle-mode) plugin code and [`CartoDB/mapboxgl-draw-rectangle-drag`](https://github.com/CartoDB/mapboxgl-draw-rectangle-drag)
 
-### Demo
-Try out this demo to see the plugin's behaviour: https://codepen.io/jesusbotella/pen/zVdxGM
+This fork of the repository adds the ability to either drag or click to create a rectangle, as well as a default to return to `drawConfig.defaultMode` (default to `simple_select`, but we use [`static`](mapbox/mapbox-gl-draw-static-mode))
 
 ## How to install
-You can install this plugin either using npm or JSDeliver.
+You can install this plugin using npm.
 
 ### Using npm
 We deliver ESM compatible code through our npm module, so that you can import it in your project and compile it without issues.
 ```shell
-npm i mapboxgl-draw-rectangle-drag --save
+npm i @impactobservatory/mapboxgl-draw-rectangle-drag --save
 ```
 The module exports a default binding to the module, so you can import it like:
 ```js
-import mapboxGLDrawRectangleDrag from 'mapboxgl-draw-rectangle-drag';
+import mapboxGLDrawRectangleDrag from '@impactobservatory/mapboxgl-draw-rectangle-drag';
 ```
-
-### Using JSDeliver
-We have a script-compatible version of the plugin as well, ready to be imported in your HTML code using a `<script>` tag.
-
-Use this URL to get the latest version:
-
-```html
-<script src="https://cdn.jsdelivr.net/gh/CartoDB/mapboxgl-draw-rectangle-drag/build/mapboxgl-draw-rectangle-drag.browser.js"></script>
-```
-
-Or add your own version number to the URL:
-
-```html
-<script src="https://cdn.jsdelivr.net/gh/CartoDB/mapboxgl-draw-rectangle-drag@1.0.1/build/mapboxgl-draw-rectangle-drag.browser.js"></script>
-```
-
-A variable named `mapboxGLDrawRectangleDrag` is defined within the global scope to be included in your Mapbox GL Draw modes.
 
 ## Usage
 You need to follow these steps in order to enable the control in your Draw instance.
