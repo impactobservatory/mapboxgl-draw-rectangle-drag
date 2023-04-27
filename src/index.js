@@ -16,9 +16,44 @@ const DrawRectangleDrag = {
     return { rectangle };
   },
 
+  onClick(state, event) {
+
+    // if state.startPoint exist, means its second click
+    if (
+      state.startPoint &&
+      state.startPoint[0] !== event.lngLat.lng &&
+      state.startPoint[1] !== event.lngLat.lat
+    ) {
+      return this.onRectangleDone(state, event);
+    }
+
+    return this.onRectangleStart(state, event);
+  },
+
+  onDrag(state, event) {
+    event.preventDefault();
+    return this.onRectangleDraw(state, event);
+  },
+
+  onKeyUp: function(state, event) {
+    if (event.keyCode === 27) return this.changeMode(this.drawConfig.defaultMode);
+  },
+
+  onMouseUp(state, event) {
+    event.preventDefault();
+    return this.onClick(state, event);
+  },
+
   onMouseDown(state, event) {
     event.preventDefault();
+    return this.onClick(state, event);
+  },
 
+  onMouseMove: function(state, event) {
+    return this.onRectangleDraw(state, event);
+  },
+
+  onRectangleStart(state, event) {
     const startPoint = [event.lngLat.lng, event.lngLat.lat];
     state.startPoint = startPoint;
 
@@ -30,7 +65,7 @@ const DrawRectangleDrag = {
     );
   },
 
-  onDrag(state, event) {
+  onRectangleDraw(state, event) {
     if (!state.startPoint) {
       return;
     }
@@ -64,11 +99,18 @@ const DrawRectangleDrag = {
     );
   },
 
-  onMouseUp(state, event) {
+  onRectangleDone(state, event) {
     state.endPoint = [event.lngLat.lng, event.lngLat.lat];
 
     this.updateUIClasses({ mouse: 'pointer' });
     this.changeMode(this.drawConfig.defaultMode, { featuresId: state.rectangle.id });
+
+  // support mobile taps
+  onTap: function(state, e) {
+    // emulate 'move mouse' to update feature coords
+    if (state.startPoint) this.onMouseMove(state, e);
+    // emulate onClick
+    this.onClick(state, e);
   },
 
   onStop(state) {
